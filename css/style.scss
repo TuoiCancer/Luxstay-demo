@@ -718,6 +718,9 @@ body {
   }
 }
 
+@media (min-width: 600px) and (max-width: 768px) {
+}
+
 @media (max-width: 599px) {
   .navbar {
     justify-content: space-around;
