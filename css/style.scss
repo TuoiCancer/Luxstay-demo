@@ -719,23 +719,25 @@ body {
 }
 
 @media (max-width: 599px) {
+  .navbar {
+    justify-content: space-around;
+  }
+
   .navbar__left-list,
   .navbar__right-list {
     display: none;
   }
 
   .navbar__logo {
+    display: none;
     margin-left: 0;
     margin-right: 4px;
   }
   .navbar__mobile-search {
     color: #ccc;
-    margin-right: 12px;
-    font-size: 14px;
-    position: absolute;
-    top: 32px;
+    font-size: 16px;
+    top: 31px;
     z-index: 1;
-    left: 80px;
   }
 
   .navbar__input-m {
@@ -743,7 +745,8 @@ body {
     margin-right: 4px;
   }
   .navbar__mobile-input {
-    padding: 12px 26px;
+    margin-left: 12px;
+    padding: 8px 0 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     position: relative;
@@ -794,8 +797,13 @@ body {
     background-color: #fff;
   }
   .header__img {
-    @include rong-dai(264px, 60px);
+    @include rong-dai(290px, 60px);
     border-radius: 24px;
+  }
+
+  .feature__list {
+    width: 100%;
+    overflow: hidden;
   }
   .feature__circle-left,
   .feature__circle-right {
@@ -805,7 +813,11 @@ body {
     display: none;
   }
   .feature__item {
-    width: 50%;
+    width: 87%;
+    overflow: visible;
+  }
+  .feature__wrap {
+    margin: 24px 0 0 24px;
   }
   .sale__list,
   .help__list,
@@ -844,6 +856,11 @@ body {
   .help {
     margin-top: 0px;
   }
+
+  .intro__left {
+    padding: 0;
+  }
+
   .intro__left-svg {
     @include rong-dai(246px, 60px);
   }
@@ -851,6 +868,18 @@ body {
   .intro__left-infor {
     font-size: 2.2rem;
     line-height: 32px;
+  }
+  .sale__item,
+  .help__item {
+    margin-right: 4px;
+  }
+
+  .header__wrap,
+  .sale__wrap,
+  .suggest__wrap,
+  .help__wrap,
+  .intro__wrap {
+    margin: 0 0 0px 24px;
   }
 
   .intro__wrap,
@@ -862,20 +891,46 @@ body {
   }
   .intro__left-item-wrap {
     flex-direction: column;
+    align-items: center;
   }
+
+  .left__intro-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .intro__right {
+    text-align: center;
+  }
+
   .intro__right-img {
     object-fit: contain;
-    @include rong-dai(266px, 250px);
+    @include rong-dai(222px, 250px);
+  }
+
+  .extra__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
   }
   .extra__list-right {
     display: none;
   }
   .extra__wrap {
     flex-direction: column;
+    margin: 48px 0px 0 18px;
+  }
+  .extra__title {
+    text-align: center;
+    display: block;
   }
 
   .extra__link {
     text-align: center;
+    font-size: 1.2rem;
   }
   .footer {
     background-color: rgb(238, 238, 238);

@@ -695,24 +695,26 @@ body {
   }
 }
 @media (max-width: 599px) {
+  .navbar {
+    justify-content: space-around;
+  }
+
   .navbar__left-list,
 .navbar__right-list {
     display: none;
   }
 
   .navbar__logo {
+    display: none;
     margin-left: 0;
     margin-right: 4px;
   }
 
   .navbar__mobile-search {
     color: #ccc;
-    margin-right: 12px;
-    font-size: 14px;
-    position: absolute;
-    top: 32px;
+    font-size: 16px;
+    top: 31px;
     z-index: 1;
-    left: 80px;
   }
 
   .navbar__input-m {
@@ -721,7 +723,8 @@ body {
   }
 
   .navbar__mobile-input {
-    padding: 12px 26px;
+    margin-left: 12px;
+    padding: 8px 0 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     position: relative;
@@ -779,9 +782,14 @@ body {
   }
 
   .header__img {
-    width: 264px;
+    width: 290px;
     height: 60px;
     border-radius: 24px;
+  }
+
+  .feature__list {
+    width: 100%;
+    overflow: hidden;
   }
 
   .feature__circle-left,
@@ -794,7 +802,12 @@ body {
   }
 
   .feature__item {
-    width: 50%;
+    width: 87%;
+    overflow: visible;
+  }
+
+  .feature__wrap {
+    margin: 24px 0 0 24px;
   }
 
   .sale__list,
@@ -843,6 +856,10 @@ body {
     margin-top: 0px;
   }
 
+  .intro__left {
+    padding: 0;
+  }
+
   .intro__left-svg {
     width: 246px;
     height: 60px;
@@ -851,6 +868,19 @@ body {
   .intro__left-infor {
     font-size: 2.2rem;
     line-height: 32px;
+  }
+
+  .sale__item,
+.help__item {
+    margin-right: 4px;
+  }
+
+  .header__wrap,
+.sale__wrap,
+.suggest__wrap,
+.help__wrap,
+.intro__wrap {
+    margin: 0 0 0px 24px;
   }
 
   .intro__wrap,
@@ -864,12 +894,32 @@ body {
 
   .intro__left-item-wrap {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .left__intro-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .intro__right {
+    text-align: center;
   }
 
   .intro__right-img {
     object-fit: contain;
-    width: 266px;
+    width: 222px;
     height: 250px;
+  }
+
+  .extra__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
   }
 
   .extra__list-right {
@@ -878,10 +928,17 @@ body {
 
   .extra__wrap {
     flex-direction: column;
+    margin: 48px 0px 0 18px;
+  }
+
+  .extra__title {
+    text-align: center;
+    display: block;
   }
 
   .extra__link {
     text-align: center;
+    font-size: 1.2rem;
   }
 
   .footer {
