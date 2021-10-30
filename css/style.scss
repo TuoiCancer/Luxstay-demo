@@ -22,9 +22,45 @@ body {
   height: $height;
 }
 
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after,
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  font-size: 16px;
+  color: #f65e39;
+  font-weight: 600;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  cursor: not-allowed;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 50%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  box-shadow: rgb(255 132 101 / 80%) 0px 0px 20px 0px;
+}
+
 .container {
   max-width: 1386px;
   margin: 0 auto;
+}
+
+.swiper-pagination {
+  position: absolute;
+  right: 10px;
+}
+
+.swiper-pagination-bullet {
+  background-color: #f65e39;
 }
 
 .navbar {
@@ -35,7 +71,7 @@ body {
   display: flex;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 10;
   width: 100%;
   &__logo {
     margin-left: 45px;
@@ -58,7 +94,7 @@ body {
     align-items: center;
     border-radius: 4px;
     @include rong-dai(600px, 47px);
-    box-shadow: 1px 1px 6px rgb(191, 191, 191);
+    box-shadow: -5px 1px 4px 1px #ebebeb;
   }
 
   &__left-search {
@@ -66,15 +102,14 @@ body {
   }
 
   &__left-item {
-    padding: 5px 0;
+    cursor: pointer;
     input {
       @include rong-dai(230px, 24px);
       margin-right: 10px;
       border: none;
+      outline: none;
     }
-    input[type="text"]:focus {
-      border: none;
-    }
+
     font-size: 1.4rem;
     i {
       margin-left: 22px;
@@ -83,9 +118,9 @@ body {
     }
   }
 
-  &__left-item:first-child,
   &__left-item:nth-child(2) {
     border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
   }
 
   &__left-item:nth-child(2) {
@@ -233,6 +268,13 @@ body {
 /*Header*/
 .header {
   margin-top: 122px;
+  &__slide {
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // width: 100%;
+    // overflow: hidden;
+  }
   &__wrap {
     margin: 0 45px;
   }
@@ -266,6 +308,7 @@ body {
 
 /* Feature*/
 .feature {
+  margin-top: 80px;
   &__wrap {
     margin: 0 45px;
   }
@@ -292,9 +335,7 @@ body {
     border-radius: 3px;
     transition: transform linear 0.35s;
   }
-  &__img:hover {
-    transform: scale(1.1);
-  }
+
   &__item {
     position: relative;
     overflow: hidden;
@@ -325,48 +366,6 @@ body {
     position: absolute;
     top: 86%;
     left: 12px;
-  }
-  &__circle-left,
-  &__circle-right {
-    @include rong-dai(56px, 56px);
-    background-color: rgb(255, 255, 255);
-    box-shadow: #000000 0px 0px 7px -4px;
-    border-radius: 50%;
-    text-align: center;
-    cursor: pointer;
-  }
-  &__cirle-icon {
-    font-size: 1.6rem;
-    margin-top: 20px;
-    color: rgb(138, 138, 138);
-  }
-
-  &__wrap-circle {
-    // position: relative;
-  }
-
-  &__circle-left {
-    position: relative;
-    z-index: 1;
-    top: 306px;
-    left: 12px;
-  }
-  &__circle-right {
-    position: relative;
-    right: 12px;
-    z-index: 1;
-    top: 250px;
-    margin-left: auto;
-  }
-  &__circle--unactive {
-    cursor: default !important;
-    background-color: rgba(223, 223, 223, 0.6) !important;
-  }
-  &__circle--active:hover {
-    box-shadow: #f65e39 0px 0px 10px -4px;
-    i {
-      color: #f65e39;
-    }
   }
 }
 
@@ -431,13 +430,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    overflow: hidden;
   }
   &__item {
     @include rong-dai(328px, 313px);
-  }
-
-  &__img:hover {
-    transform: scale(1.1);
+    margin: 0 10px;
   }
 
   &__img {
@@ -489,7 +487,7 @@ body {
     cursor: pointer;
     box-shadow: #000000 0px 0px 7px -4px;
     i {
-      margin-top: 18px;
+      line-height: 56px;
       font-size: 2rem;
       color: rgb(160, 160, 160);
     }
@@ -708,6 +706,78 @@ body {
   }
 }
 
+.booking {
+  background-color: #fff;
+  cursor: default;
+  top: 70px;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 2px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  position: fixed;
+  display: none;
+  opacity: 0;
+  transition: all 0.2s linear;
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+
+    h2 {
+      font-weight: 600;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+  }
+
+  &-content {
+    margin-right: 30px;
+  }
+
+  &-btn {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    background-color: #f5f7fa;
+    color: #222;
+    border-radius: 50%;
+    cursor: not-allowed;
+    font-size: 2rem;
+    margin: 0 12px;
+    border: 1px solid #ced4da;
+    opacity: 0.4;
+  }
+  &-btn.active {
+    &:hover {
+      color: #f65e39;
+    }
+    opacity: 1;
+    cursor: pointer;
+  }
+  &-chosen {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    p {
+      font-weight: 600;
+      cursor: pointer;
+      &.active {
+        color: #f65e39;
+      }
+    }
+  }
+  &.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
 // Responsive
 
 // .navbar__input-m,
@@ -723,9 +793,25 @@ body {
   .menu__items {
     display: none;
   }
+  .intro__wrap {
+    flex-direction: column;
+  }
+  .intro__right {
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
+  }
+  .intro__left-list {
+    align-items: center;
+  }
 }
+
 // iPad
 @media (min-width: 768px) and (max-width: 1023px) {
+  // .swiper-button-next,
+  // .swiper-button-prev {
+  //   display: none;
+  // }
   .navbar__right-list {
     display: none;
   }
@@ -802,6 +888,17 @@ body {
     margin-left: 10px;
     cursor: pointer;
     margin-right: 12px;
+  }
+  .suggest__item-infor {
+    font-size: 2rem;
+  }
+  .suggest__item-desc {
+    font-size: 1.4rem;
+  }
+  .suggest__img-wrap,
+  .suggest__img {
+    width: 100%;
+    height: 100%;
   }
   .header__img {
     object-fit: contain;
@@ -919,10 +1016,25 @@ body {
   }
 
   .header__img {
-    @include rong-dai(290px, 60px);
+    @include rong-dai(100%, 100%);
     border-radius: 24px;
   }
-
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
+    // left: 22px;
+  }
+  .feature__infor {
+    margin-bottom: 20px;
+  }
+  .feature__img {
+    @include rong-dai(100%, 360px);
+  }
+  .feature__content {
+    left: 32px;
+  }
+  .feature__address {
+    left: 30px;
+  }
   .feature__list {
     width: 100%;
     overflow: hidden;
@@ -948,11 +1060,12 @@ body {
     overflow: hidden;
   }
   .sale__img {
-    @include rong-dai(245px, 128px);
+    @include rong-dai(100%, 100%);
     border-radius: 24px;
     object-fit: contain;
   }
   .sale__content {
+    margin-bottom: 20px;
     display: block;
   }
   .sale__infor {
@@ -964,19 +1077,30 @@ body {
   }
   .suggest__btn-left,
   .suggest__btn-right {
-    display: none;
+    @include rong-dai(45px, 45px);
+  }
+  .suggest__btn-left i,
+  .suggest__btn-right i {
+    line-height: 45px;
+  }
+  .suggest__btn-left {
+    left: -14px;
+  }
+  .suggest__btn-right {
+    right: 0;
   }
 
   .suggest__img {
-    @include rong-dai(240px, 150px);
+    @include rong-dai(100%, 150px);
     object-fit: cover;
     border-radius: 12px;
   }
+  .suggest__img,
   .suggest__img-wrap {
-    height: 160px;
+    @include rong-dai(100%, 100%);
   }
   .help {
-    margin-top: 0px;
+    margin-top: 40px;
   }
 
   .intro__left {
@@ -991,9 +1115,15 @@ body {
     font-size: 2.2rem;
     line-height: 32px;
   }
-  .sale__item,
+  // .sale__item,
+  // .help__infor {
+  //   margin-top: 50px;
+  // }
   .help__item {
     margin-right: 4px;
+  }
+  .help__img {
+    @include rong-dai(100%, 100%);
   }
 
   .header__wrap,
